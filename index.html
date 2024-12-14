@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <main>
+        <section>
+          <h1><span>studio</span> <span>letten<span></h1>
+        </section>
+        <section>
+          <ul id="gallery">
+            <li><img src="images/01.webp" alt="Stutio link" /></li>
+            <li><img src="images/04.webp" alt="Studio rechts" /></li>
+            <li><img src="images/02.webp" alt="Rückzug" /></li>
+            <li><img src="images/03.webp" alt="Terasse" /></li>
+          </ul>
+        </section>
+      </main>
+      <footer>
+        <address>
+          <ul>
+            <li>studio letten</li>
+            <li>Wasserwerkstrasse 94</li>
+            <li>8037 Zürich</li>
+            <li>
+              <br />
+              <a href="mailto:hoi@letten.studio">hoi@letten.studio</a>
+            </li>
+          </ul>
+        </address>
+      </footer>
+    </div>
+    <script>
+      const titleSectionEl = document.querySelector('main section');
+      
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const rotation = scrollY * 0.1;
+        titleSectionEl.style.setProperty('--rotate-smiley', rotation+'deg');
+      });
+    </script>
+  </body>
+</html>

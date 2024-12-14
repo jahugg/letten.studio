@@ -1,0 +1,172 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: var(--color-background-default);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("DMSans-VariableFont.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+}
+
+@keyframes moveWave {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+
+:root {
+  /* credits: https://jameshfisher.com/2024/03/12/a-formula-for-responsive-font-size/ */
+  --font-size-base: calc(1rem + 0.25vw);
+  --font-weight-regular: 300;
+  --font-weight-bold: 800;
+  --font-family: "DM Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+  --font-big: normal var(--font-weight-bold) 3em/1.2em var(--font-family);
+  --font-regular: normal var(--font-weight-regular) 1em/1.2em var(--font-family);
+
+  --color-lightpink: oklch(88.82% 0.0222 360);
+  --color-stalegrey: oklch(26.2% 0.015 256);
+  --color-piggypink: oklch(71.47% 0.1431 360);
+
+  --color-background-default: var(--color-stalegrey);
+  --color-background-inverted: var(--color-lightpink);
+  --color-text-default: var(--color-lightpink);
+  --color-text-highlight: var(--color-piggypink);
+  --color-text-inverted: var(--color-stalegrey);
+  --color-mix-light: white 30%;
+
+  --spacing-xl: 160px;
+  --spacing-l: 40px;
+}
+
+#app {
+  font: normal var(--font-weight-regular) var(--font-size-base)
+    var(--font-family);
+  font-optical-sizing: auto;
+
+  ::selection {
+    background-color: var(
+      --color-background-inverted
+    ); /* Highlight background color */
+    color: var(--color-text-inverted); /* Highlighted text color */
+  }
+
+  background: var(--color-background-default);
+  color: var(--color-text-default);
+
+  & a {
+    color: var(--color-text-highlight);
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: color-mix(
+        in oklch,
+        var(--color-text-highlight),
+        var(--color-mix-light)
+      );
+    }
+  }
+}
+
+main {
+  overflow: hidden;
+
+  & section {
+    padding: var(--spacing-xl) var(--spacing-l);
+    display: flex;
+    justify-content: center;
+
+    &:first-child {
+      --rotate-smiley: 0deg;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+      h1 {
+        font: var(--font-big);
+        text-align: center;
+        letter-spacing: 0.02em;
+
+        & span:first-child {
+          background: var(--color-background-inverted);
+          color: var(--color-text-inverted);
+        }
+
+        & span:nth-child(2) {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 7px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="6" viewBox="0 0 40 6"><path fill="none" stroke="%23e8d4d9" stroke-width="3" d="M0 3 Q10 0 20 3 T40 3"/></svg>')
+              repeat-x;
+            animation: moveWave 1s linear infinite;
+          }
+        }
+      }
+
+      &::after {
+        content: "☺";
+        position: fixed;
+        bottom: 0;
+        font-size: 4em;
+        mix-blend-mode: difference;
+        transform: rotate(var(--rotate-smiley));
+      }
+    }
+  }
+
+  & #gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    max-width: 900px;
+
+    & li {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+    }
+
+    & img {
+      max-width: 100%;
+    }
+  }
+}
+
+footer {
+  padding-bottom: var(--spacing-xl);
+
+  & address {
+    display: flex;
+    justify-content: center;
+    font: var(--font-regular);
+    text-align: center;
+  }
+}
