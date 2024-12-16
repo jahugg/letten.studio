@@ -131,10 +131,14 @@ main {
       }
 
       &::after {
-        content: "☺";
+        --size: 100px;
+        content: "";
+        height: var(--size);
+        width: var(--size);
+        background: url('./images/smiley.svg') center / contain no-repeat;
         position: fixed;
         bottom: 0;
-        font-size: 4em;
+        filter: invert(1) brightness(2);
         mix-blend-mode: difference;
         transform: rotate(var(--rotate-smiley));
       }
