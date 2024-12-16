@@ -29,7 +29,7 @@ ul {
     background-position: 0 0;
   }
   to {
-    background-position: 40px 0;
+    background-position: 400px 0;
   }
 }
 
@@ -123,22 +123,22 @@ main {
             right: 0;
             bottom: 0;
             height: 7px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="6" viewBox="0 0 40 6"><path fill="none" stroke="%23e8d4d9" stroke-width="3" d="M0 3 Q10 0 20 3 T40 3"/></svg>')
-              repeat-x;
-            animation: moveWave 1s linear infinite;
+            background: url("./images/sine.svg") center / contain repeat-x;
+            /*filter: invert(1) brightness(2);*/
+            animation: moveWave 20s linear infinite;
           }
         }
       }
 
       &::after {
-        --size: 100px;
+        --size: 70px;
         content: "";
         height: var(--size);
         width: var(--size);
         background: url('./images/smiley.svg') center / contain no-repeat;
         position: fixed;
-        bottom: 0;
-        filter: invert(1) brightness(2);
+        bottom: var(--spacing-l);
+        /*filter: invert(1) brightness(2);*/
         mix-blend-mode: difference;
         transform: rotate(var(--rotate-smiley));
       }
