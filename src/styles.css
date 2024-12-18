@@ -92,7 +92,7 @@ main {
   overflow: hidden;
 
   & section {
-    padding: var(--spacing-xl) var(--spacing-l);
+    padding: var(--spacing-xl) min(var(--spacing-l), 3vw);
     display: flex;
     justify-content: center;
 
